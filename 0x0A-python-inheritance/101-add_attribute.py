@@ -1,14 +1,10 @@
 #!/usr/bin/python3
-"""dds a new attribute to an object
-if it’s possible
-"""
+""" add_attribute module """
 
 
-def add_attribute(obj, attribute, value):
-    """dds a new attribute"""
-    if '__dict__' not in dir(obj):
+def add_attribute(prmObject, prmName, prmValue):
+    """ add_attribute function """
+    if not hasattr(prmObject, "__dict__"):
         raise TypeError("can't add new attribute")
-    if '__slots__' in dir(obj):
-        raise TypeError("can't add new attribute")
-    else:
-        setattr(obj, attribute, value)
+    if (not hasattr(prmObject, prmName)):
+        prmObject.__setattr__(prmName, prmValue)
